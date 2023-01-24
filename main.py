@@ -4,9 +4,13 @@ import time
 
 memberID = 0
 MDatabase = {}
+# MDatabase = {'Member#1': {'first_Name': 'Daniel', 'last_Name': 'Escobar', 'phone_Num': '9542402809',
+#                           'email': 'danielescobar492@gmail.com', 'date_Purchased': 'Monday, January 23, 07:14', 'id': 1},
+#              'Member#2': {'first_Name': 'Ana', 'last_Name': 'Abinazar', 'phone_Num': '33333', 'email': 'asdasdf333',
+#                           'date_Purchased': 'Monday, January 23, 07:14', 'id': 2}}
+
 
 def addMember(MDatabaseNew, NewMemberID):
-
     member = {
         'first_Name': ' ',
         'last_Name': ' ',
@@ -45,17 +49,21 @@ def addMember(MDatabaseNew, NewMemberID):
     elif confirmation == "n":
         addMember(MDatabaseNew, NewMemberID - 1)
 
+
 def displayList(MDataBaseDisplay, DisplayMemberID):
-    print(MDataBaseDisplay)
+    print(("First Name" + "\t" + "Last Name" + "\t" + "Phone Number" + "\t" + "Email" + "\t" + "ID #"+ "\t" + "Date Purchased").expandtabs(30))
+    for member in MDataBaseDisplay:
+        print((MDataBaseDisplay[str(member)]['first_Name'] + "\t" +
+              MDataBaseDisplay[str(member)]['last_Name'] + "\t" +
+              str(MDataBaseDisplay[str(member)]['phone_Num']) + "\t" +
+              MDataBaseDisplay[str(member)]['email'] + "\t" +
+              str(MDataBaseDisplay[str(member)]['id']).zfill(6) + "\t" + MDataBaseDisplay[str(member)]['date_Purchased']).expandtabs(30)
+              )
+
     main(DisplayMemberID)
 
 
-
 def main(MainMemberID):
-    # database variables
-
-
-
     valid_characters = "abc"
     while True:
         print("Welcome to the Cantina Tracker App")
